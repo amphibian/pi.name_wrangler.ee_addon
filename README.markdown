@@ -8,15 +8,15 @@ Name Wrangler lets you use proper names in the format SURNAME, GIVEN NAME in the
 
 ###Example use:
 
-`{exp:name_wrangler}Hedges, Chris{/exp:name_wrangler} consistently impresses me with his writing and journalism.
+`{exp:name_wrangler}Hedges, Chris{/exp:name_wrangler} consistently impresses me with his writing and journalism.`
 
 Returns "Chris Hedges consistently impresses me with his writing and journalism."
 
-`{exp:name_wrangler type="first" form="posessive"}Hedges, Chris{/exp:name_wrangler} latest book is a sobering read.
+`{exp:name_wrangler type="first" form="posessive"}Hedges, Chris{/exp:name_wrangler} latest book is a sobering read.`
 
 This returns "Chris' latest book is a sobering read."
 
-`{exp:name_wrangler type="last"}Hedges, Chris & Moore, Alan & Robinson, Kim Stanley{/exp:name_wrangler} are very different, but all must-read authors.
+`{exp:name_wrangler type="last"}Hedges, Chris & Moore, Alan & Robinson, Kim Stanley{/exp:name_wrangler} are very different, but all must-read authors.`
 
 This returns "Hedges, Moore & Robinson are very different, but all must-read authors."
 
