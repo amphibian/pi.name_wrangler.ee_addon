@@ -22,4 +22,4 @@ This returns "Hedges, Moore & Robinson are very different, but all must-read aut
 
 ###Requirements
 
-Name Wrangler is a plugin for the [ExpressionEngine](http://expressionengine.com) content management system, and has been tested with ExpressionEngone version 1.6.8.
+Name Wrangler is a plugin for the [ExpressionEngine](http://expressionengine.com) content management system, and has been tested with ExpressionEngine version 1.6.8.
