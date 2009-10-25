@@ -19,3 +19,7 @@ This returns "Chris' latest book is a sobering read."
 `{exp:name_wrangler type="last"}Hedges, Chris & Moore, Alan & Robinson, Kim Stanley{/exp:name_wrangler} are very different, but all must-read authors.
 
 This returns "Hedges, Moore & Robinson are very different, but all must-read authors."
+
+###Requirements
+
+Name Wrangler is a plugin for the [ExpressionEngine](http://expressionengine.com) content management system, and has been tested with ExpressionEngone version 1.6.8.
