@@ -2,7 +2,7 @@
 
 $plugin_info = array(
 	'pi_name' => 'Name Wrangler',
-	'pi_version' => '1.0',
+	'pi_version' => '1.0.1',
 	'pi_author' => 'Derek Hogue',
 	'pi_author_url' => 'http://amphibian.info/',
 	'pi_description' => 'Store proper names in their ideal format but still use them in all sorts of namey ways.',
@@ -49,11 +49,30 @@ class Name_wrangler
 			foreach($names as $name)
 			{
 				$name_parts = explode(' ', $name);
-				$surname = array_pop($name_parts);
-				$firstname = implode(' ', $name_parts);
-				// It should be noted that $firstname includes any middle names if present
 				
-				$name_segments[] = ($type == 'last') ? $surname : $firstname;
+				// If there are two words or more in the name, the last one is the surname
+				$surname = (count($name_parts) > 1) ? array_pop($name_parts) : $name_parts[0];
+				
+				// If there remains more than one word, the first one is the first name
+				$firstname = (count($name_parts) > 1) ? array_shift($name_parts) : $name_parts[0];
+				
+				// If there's anything left in the array, it's all middle names
+				$middlename = (!empty($name_parts)) ? implode(' ', $name_parts) : '';
+				
+				switch($type)
+				{
+					case 'first': $name_segments[] = $firstname;
+					break;
+					
+					case 'middle': $name_segments[] = $middlename;
+					break;
+
+					case 'first+middle': $name_segments[] = $firstname . ' ' . $middlename;
+					break;
+					
+					case 'last': $name_segments[] = $lastname;
+					break;					
+				}
 			}
 			$r = $this->concatenate_names($name_segments);
 		}
@@ -107,7 +126,7 @@ class Name_wrangler
 	{
 	ob_start(); 
 	?>
-Name Wrangler lets you use proper names in the format SURNAME, GIVEN NAME in the back-end (in order to faciliate proper sorting), but still display them in the the format GIVEN NAME SURNAME. It also allows you to display first and last names independently, in both singular and posessive forms, and to do this with both single names and lists of ampersand- or semicolon-separated names.
+Name Wrangler lets you use proper names in the format SURNAME, GIVEN NAME in the back-end (in order to faciliate proper sorting), but still display them in the the format GIVEN NAME SURNAME. It also allows you to display first, middle, and last names independently, in both singular and posessive forms, and to do this with both single names and lists of ampersand- or semicolon-separated names.
 
 Example use:
 
@@ -125,7 +144,7 @@ This returns "Hedges, Moore & Robinson are very different, but all must-read aut
 
 Parameters:
 
-"type": the type of name(s) to return. Either "full", "first" or "last".  Defaults to "full".
+"type": the type of name(s) to return. Either "full", "first", "middle", "first+middle" or "last".  Defaults to "full".
 "form": either "singular" or "posessive". Defaults to "singular".
 "and": word or character entity to use  before the last name at the end of a list of names.  Defaults to "&amp;".
 
