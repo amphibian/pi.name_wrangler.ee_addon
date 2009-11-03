@@ -4,7 +4,7 @@ $plugin_info = array(
 	'pi_name' => 'Name Wrangler',
 	'pi_version' => '1.0.1',
 	'pi_author' => 'Derek Hogue',
-	'pi_author_url' => 'http://amphibian.info/',
+	'pi_author_url' => 'http://github.com/amphibian/pi.name_wrangler.ee_addon',
 	'pi_description' => 'Store proper names in their ideal format but still use them in all sorts of namey ways.',
 	'pi_usage' => Name_wrangler::usage()
 );
