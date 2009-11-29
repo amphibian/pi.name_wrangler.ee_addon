@@ -2,7 +2,7 @@
 
 $plugin_info = array(
 	'pi_name' => 'Name Wrangler',
-	'pi_version' => '1.0.1',
+	'pi_version' => '1.0.2',
 	'pi_author' => 'Derek Hogue',
 	'pi_author_url' => 'http://github.com/amphibian/pi.name_wrangler.ee_addon',
 	'pi_description' => 'Store proper names in their ideal format but still use them in all sorts of namey ways.',
@@ -70,7 +70,7 @@ class Name_wrangler
 					case 'first+middle': $name_segments[] = $firstname . ' ' . $middlename;
 					break;
 					
-					case 'last': $name_segments[] = $lastname;
+					case 'last': $name_segments[] = $surname;
 					break;					
 				}
 			}
