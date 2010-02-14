@@ -4,6 +4,7 @@ Name Wrangler lets you use proper names in the format SURNAME, GIVEN NAME in the
 
 - **type**: the type of name(s) to return. Either "full", "first", "middle", "first+middle", or "last".  Defaults to "full".
 - **form**: either "singular" or "posessive". Defaults to "singular".
+- **multiple**: if set to "off", Name Wrangler will not look for multiple names (useful for when you want to use ampersands within names).
 - **and**: word or character entity to use  before the last name at the end of a list of names.  Defaults to "&amp;".
 
 ###Example use:

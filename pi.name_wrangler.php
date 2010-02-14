@@ -16,14 +16,16 @@ class Name_wrangler
 
 	function Name_wrangler($str = '')
 	{
-		global $TMPL, $and;
+		global $TMPL;
 		
 		if($str == '') $str = $TMPL->tagdata;
-		// Replace all forms of ampersand with a standard delimiter
-		$str = str_replace(array(' & ', '&amp;', '&#38;'), '+', $str);
 
 		$type = ( $TMPL->fetch_param('type') == '' ) ? 'full' : $TMPL->fetch_param('type');
 		$form = ( $TMPL->fetch_param('form') == '' ) ? 'singular' : $TMPL->fetch_param('form');
+		$multiple = ( $TMPL->fetch_param('multiple') == 'off' ) ? FALSE : TRUE;
+		
+		// Replace all forms of ampersand with a standard delimiter
+		$str = ($multiple == TRUE) ? str_replace(array(' & ', '&amp;', '&#38;'), '+', $str) : $str;		
 		
 		$names = array();
 		
@@ -146,6 +148,7 @@ Parameters:
 
 "type": the type of name(s) to return. Either "full", "first", "middle", "first+middle" or "last".  Defaults to "full".
 "form": either "singular" or "posessive". Defaults to "singular".
+"multiple": if set to "off", Name Wrangler will not look for multiple names (useful for when you want to use ampersands within names).
 "and": word or character entity to use  before the last name at the end of a list of names.  Defaults to "&amp;".
 
 	<?php
