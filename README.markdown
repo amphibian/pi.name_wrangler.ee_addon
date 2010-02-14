@@ -1,4 +1,4 @@
-Name Wrangler lets you use proper names in the format SURNAME, GIVEN NAME in the back-end (in order to faciliate proper sorting), but still display them in the the format GIVEN NAME SURNAME. It also allows you to display first, middle, and last names independently, in both singular and posessive forms, and to do this with both individual names and lists of ampersand- or semicolon-separated names.
+Name Wrangler lets you use proper names in the format SURNAME, GIVEN NAME in the back-end (in order to faciliate proper sorting), but still display them in the the format GIVEN NAME SURNAME. It also allows you to display first, middle, and last names independently, in both singular and posessive forms, and to do this with both individual names and lists of ampersand- or "+"-separated names.
 
 ###Parameters:
 

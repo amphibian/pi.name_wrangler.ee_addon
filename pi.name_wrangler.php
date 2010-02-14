@@ -2,7 +2,7 @@
 
 $plugin_info = array(
 	'pi_name' => 'Name Wrangler',
-	'pi_version' => '1.0.2',
+	'pi_version' => '1.0.3',
 	'pi_author' => 'Derek Hogue',
 	'pi_author_url' => 'http://github.com/amphibian/pi.name_wrangler.ee_addon',
 	'pi_description' => 'Store proper names in their ideal format but still use them in all sorts of namey ways.',
@@ -20,7 +20,7 @@ class Name_wrangler
 		
 		if($str == '') $str = $TMPL->tagdata;
 		// Replace all forms of ampersand with a standard delimiter
-		$str = str_replace(array(' & ', '&amp;', '&#38;'), ';', $str);
+		$str = str_replace(array(' & ', '&amp;', '&#38;'), '+', $str);
 
 		$type = ( $TMPL->fetch_param('type') == '' ) ? 'full' : $TMPL->fetch_param('type');
 		$form = ( $TMPL->fetch_param('form') == '' ) ? 'singular' : $TMPL->fetch_param('form');
@@ -28,7 +28,7 @@ class Name_wrangler
 		$names = array();
 		
 		// Check if we have multiple names
-		if( $people = explode(';', $str) )
+		if( $people = explode('+', $str) )
 		{
 			foreach($people as $person)
 			{
@@ -126,7 +126,7 @@ class Name_wrangler
 	{
 	ob_start(); 
 	?>
-Name Wrangler lets you use proper names in the format SURNAME, GIVEN NAME in the back-end (in order to faciliate proper sorting), but still display them in the the format GIVEN NAME SURNAME. It also allows you to display first, middle, and last names independently, in both singular and posessive forms, and to do this with both single names and lists of ampersand- or semicolon-separated names.
+Name Wrangler lets you use proper names in the format SURNAME, GIVEN NAME in the back-end (in order to faciliate proper sorting), but still display them in the the format GIVEN NAME SURNAME. It also allows you to display first, middle, and last names independently, in both singular and posessive forms, and to do this with both single names and lists of ampersand- or plus-separated names.
 
 Example use:
 
@@ -138,7 +138,7 @@ Returns "Chris Hedges consistently impresses me with his writing and journalism.
 
 This returns "Chris' latest book is a sobering read."
 
-{exp:name_wrangler type="last"}Hedges, Chris & Moore, Alan & Robinson, Kim Stanley{/exp:name_wrangler} are very different, but all must-read authors.
+{exp:name_wrangler type="last"}Hedges, Chris + Moore, Alan + Robinson, Kim Stanley{/exp:name_wrangler} are very different, but all must-read authors.
 
 This returns "Hedges, Moore & Robinson are very different, but all must-read authors."
 
