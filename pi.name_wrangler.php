@@ -2,7 +2,7 @@
 
 $plugin_info = array(
 	'pi_name' => 'Name Wrangler',
-	'pi_version' => '1.0.3',
+	'pi_version' => '1.0.4',
 	'pi_author' => 'Derek Hogue',
 	'pi_author_url' => 'http://github.com/amphibian/pi.name_wrangler.ee_addon',
 	'pi_description' => 'Store proper names in their ideal format but still use them in all sorts of namey ways.',
@@ -53,10 +53,10 @@ class Name_wrangler
 				$name_parts = explode(' ', $name);
 				
 				// If there are two words or more in the name, the last one is the surname
-				$surname = (count($name_parts) > 1) ? array_pop($name_parts) : $name_parts[0];
+				$surname = array_pop($name_parts);
 				
 				// If there remains more than one word, the first one is the first name
-				$firstname = (count($name_parts) > 1) ? array_shift($name_parts) : $name_parts[0];
+				$firstname = array_shift($name_parts);
 				
 				// If there's anything left in the array, it's all middle names
 				$middlename = (!empty($name_parts)) ? implode(' ', $name_parts) : '';
